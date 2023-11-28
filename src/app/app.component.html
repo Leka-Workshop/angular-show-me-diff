@@ -29,10 +29,27 @@
       </div>
     </div>
 
-    <div class="button-wrapper">
-      <button class="submit-btn" type="button" (click)="onSubmit()">
-        Compare
-      </button>
+    <div class="form-submit-wrapper">
+      <div class="format-wrapper">
+      <!--   <label>
+          <input type="radio" value="typescript" (click)="setLanguage('typescript')" />
+          <span>TypeScript</span>
+        </label>
+        <label>
+          <input type="radio" value="vbnet" (click)="setLanguage('vbnet')" />
+          <span>VB .NET</span>
+        </label>
+        <label>
+          <input type="radio" value="sql" (click)="setLanguage('sql')" />
+          <span>SQL</span>
+        </label> -->
+      </div>
+
+      <div class="button-wrapper">
+        <button class="submit-btn" type="button" (click)="onSubmit()">
+          Compare
+        </button>
+      </div>
     </div>
   </form>
 </div>
@@ -40,22 +57,28 @@
 <div *ngIf="union || differences || intersection">
   <div class="main-layout">
     <div class="title">Difference</div>
-    <pre class="pre-text">{{ differences | json }}</pre>
+    <pre class="pre-text" *ngIf="differences">
+      <code [highlight]="differences" [languages]="['sql']"></code>
+    </pre>
   </div>
 
   <div class="main-layout">
     <div class="title">Union</div>
-    <pre class="pre-text">{{ union | json }}</pre>
+    <pre class="pre-text" *ngIf="union">
+      <code [highlight]="union" [languages]="['sql']"></code>
+    </pre>
   </div>
 
   <div class="main-layout">
     <div class="title">Intersection</div>
-    <pre class="pre-text">{{ intersection | json }}</pre>
+    <pre class="pre-text" *ngIf="intersection">
+      <code [highlight]="intersection" [languages]="['sql']"></code>
+    </pre>
   </div>
 </div>
 
 <div class="footer">
-  <div> - We don't collect any data - </div>
+  <div>- We don't collect any data -</div>
   <div>
     <a
       href="https://github.com/Leka-Workshop/angular-show-me-diff"

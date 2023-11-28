@@ -30,11 +30,10 @@
   border-radius: 5px;
 }
 
-.button-wrapper {
+.form-submit-wrapper {
   margin-top: 30px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  justify-content: space-between;
 }
 
 .submit-btn {
@@ -45,7 +44,7 @@
   border-radius: 2%;
   border: 0;
   height: 30px;
-  padding: 0 2%;
+  padding: 0 10px;
   cursor: pointer;
 }
 
@@ -54,7 +53,9 @@
 }
 
 .pre-text {
-  padding: 5px;
-  background: #DDD;
   white-space: pre-wrap;
+}
+
+code {
+  border: 2px solid #222;
 }
