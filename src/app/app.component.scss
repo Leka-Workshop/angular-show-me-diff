@@ -26,20 +26,21 @@
   width: 100%;
   resize: none;
   border: 1px solid forestgreen;
-  outline: none;
+  outline-color: lightgreen;
   border-radius: 5px;
 }
 
-.form-submit-wrapper {
+.button-wrapper {
   margin-top: 30px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .submit-btn {
   background: forestgreen;
   color: white;
-  outline: none;
+  outline-color: lightgreen;
   box-sizing: border-box;
   border-radius: 2%;
   border: 0;

@@ -1,13 +1,11 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Change, diffWordsWithSpace } from 'diff';
-import { Subject, takeUntil } from 'rxjs';
 
 enum FormFields {
   Original = 'original',
-  Updated = 'updated',
-  Language = 'language'
+  Updated = 'updated'
 }
 
 @Component({
@@ -15,8 +13,7 @@ enum FormFields {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
-  private unsubscribe$ = new Subject<void>();
+export class AppComponent implements OnInit {
 
   title = 'Show Me Diff';
 
@@ -31,38 +28,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.setupForm();
-    // this.listenOnLanguageChanges();
-  }
-
-  ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
   }
 
   private setupForm(): void {
     this.compareForm = this.fb.group({
       [FormFields.Original]: [''],
-      [FormFields.Updated]: [''],
-      // [FormFields.Language]: ['1']
+      [FormFields.Updated]: ['']
     });
   }
 
-  setLanguage(lng: string) {
-    console.log(lng);
-    this.formatLanguage = lng;
-  }
-
-  // private listenOnLanguageChanges() {
-  //   this.compareForm.get(FormFields.Language)?.valueChanges
-  //   .pipe(
-  //     takeUntil(this.unsubscribe$)
-  //   )
-  //   .subscribe((newSelection: string) => {
-  //     this.formatLanguage = newSelection;
-  //     this.cdr.detectChanges(); // Manually trigger change detection
-
-  //   })
-  // }
 
   onSubmit(): void {
     const { original, updated } = this.compareForm.value;
